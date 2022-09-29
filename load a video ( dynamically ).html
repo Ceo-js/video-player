@@ -1,0 +1,34 @@
+
+
+    <video-area>
+        <videoholder>
+        <video src="vds/03.mp4" controls autoplay></video>
+        <label class="main-info"></label>
+        </videoholder>
+        <playlist>
+            <h2 class="video-btn" src="vds/01.mp4">v1</h2>
+            <h2 class="video-btn" src="vds/02.mp4">v2</h2>
+        </playlist>
+    </video-area>
+
+    <script>
+        window.addEventListener( "load", ev => {
+            var videoBtns = document.querySelectorAll( ".video-btn" ),
+                video = document.querySelector( "video" );
+
+            function loadVideo( videourl ) {
+                var parameter = new Date().getMilliseconds();
+                
+                video.setAttribute( "src", `${videourl}?t=${parameter}&=ceo` );
+                
+                video.load();
+            }
+
+            videoBtns.forEach( v => {
+                v.addEventListener( "click", ev => {
+                    loadVideo( v.getAttribute( "src" ) );
+                } );
+            } );
+
+        } );
+    </script>
